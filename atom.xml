@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xxz6.github.io</id>
     <title>Gridea</title>
-    <updated>2020-06-16T16:42:14.977Z</updated>
+    <updated>2020-06-16T16:43:39.699Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xxz6.github.io"/>
     <link rel="self" href="https://xxz6.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://xxz6.github.io/images/avatar.png</logo>
     <icon>https://xxz6.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[超级喜欢三丰的服务器超级棒]]></title>
+        <id>https://xxz6.github.io/post/chao-ji-xi-huan-san-feng-de-fu-wu-qi-chao-ji-bang/</id>
+        <link href="https://xxz6.github.io/post/chao-ji-xi-huan-san-feng-de-fu-wu-qi-chao-ji-bang/">
+        </link>
+        <updated>2020-06-16T16:42:20.000Z</updated>
+        <content type="html"><![CDATA[<p>帮了我大忙,我以后会好好用他的,多多续费<img src="https://xxz6.github.io/post-images/1592325808814.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[python+笔记]]></title>
         <id>https://xxz6.github.io/post/pythonbi-ji/</id>
