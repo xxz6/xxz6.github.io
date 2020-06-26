@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gridea</title>
-<link rel="shortcut icon" href="https://xxz6.github.io/favicon.ico?v=1592478262396">
+<link rel="shortcut icon" href="https://xxz6.github.io/favicon.ico?v=1593146614040">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://xxz6.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Gridea - Atom Feed" href="https://xxz6.github.io/atom.xml">
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://xxz6.github.io">
-  <img class="avatar" src="https://xxz6.github.io/images/avatar.png?v=1592478262396" alt="">
+  <img class="avatar" src="https://xxz6.github.io/images/avatar.png?v=1593146614040" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -70,6 +70,72 @@
 
     
         <div class="post-container">
+  
+    <article class="post">
+      <a href="https://xxz6.github.io/post/pa-qu-du-ci-wang-ye-de-ip-di-zhi-ji-jian-ce-shi-fou-ke-yong-yi-ji-xia-zai/">
+        <h2 class="post-title">爬取毒刺网页的ip地址及检测是否可用以及下载</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-06-26
+        </span>
+        <span>
+          2 min read
+        </span>
+        
+          <a href="https://xxz6.github.io/tag/Mv2slQXH8/" class="post-tag">
+            # py实例
+          </a>
+        
+      </div>
+      
+      <div class="post-abstract">
+        <p>import requests<br>
+from bs4 import BeautifulSoup<br>
+from threading import Thread<br>
+import time</p>
+<p>headers = {  # 爬取需要模拟浏览器来访问<br>
+'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Mobile Safari/537.36'<br>
+}<br>
+def huoqu(proxies, targeurl, ip, f):  # 判断是否可用的方法<br>
+response = requests.get(targeurl, proxies=proxies, headers=headers, timeout=5).status_code<br>
+if response == 200:<br>
+f.write(ip + '\n')<br>
+print(ip + '可用')</p>
+<p>def danye():<br>
+for aa in range(1, 10):  # 爬取前10页每访问一页+1<br>
+url = 'https://www.xicidaili.com/nt/{}'.format(aa)<br>
+headers = {<br>
+'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Mobile Safari/537.36'<br>
+}<br>
+requ = requests.get(url, headers=headers)<br>
+soup = BeautifulSoup(requ.text)<br>
+xz = soup.find_all('tr', class_=&quot;odd&quot;)<br>
+with open('ip.xls', 'a', encoding='utf-8')as f:<br>
+for i in xz:  # 从html锁定ip以及它的端口<br>
+t = i.find_all('td')<br>
+ip = t[1].text+':' + t[2].text<br>
+# ip = '58.20.196.142:443'<br>
+proxies = {'http': 'http://'+ip}<br>
+targeurl = 'https://www.baidu.com/' # 访问百度是否可用<br>
+try: #可用就执行写入操作否则跳过<br>
+th_list = []<br>
+for i in range(1):<br>
+th = Thread(target=huoqu(proxies, targeurl, ip, f))<br>
+th_list.append(th)<br>
+for th in th_list:<br>
+th.start()</p>
+<pre><code>            except:
+                print(ip)
+                print('ip不可用')
+</code></pre>
+<p>start_time = time.time()  #记录 开始运行时间<br>
+danye()<br>
+end_time = time.time()  #记录结束运行时间<br>
+print('访问共耗时', end_time-start_time)</p>
+
+      </div>
+    </article>
   
     <article class="post">
       <a href="https://xxz6.github.io/post/123/">

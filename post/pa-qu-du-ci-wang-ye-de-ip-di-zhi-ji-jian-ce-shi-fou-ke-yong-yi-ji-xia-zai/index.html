@@ -2,28 +2,22 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>爬取毒刺网页的ip地址及检测是否可用以及下载 | Gridea</title>
 <link rel="shortcut icon" href="https://xxz6.github.io/favicon.ico?v=1593146614040">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://xxz6.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="关于 | Gridea - Atom Feed" href="https://xxz6.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="爬取毒刺网页的ip地址及检测是否可用以及下载 | Gridea - Atom Feed" href="https://xxz6.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
-
-🏠 关于本站
-👨‍💻 博主是谁
-你们的可爱鑫小张
-⛹ 兴趣爱好
-课余游戏
-📬 联系我呀
-QQ:2830023171
-邮箱:2830023171@qq.com
-..." />
-    <meta name="keywords" content="" />
+    <meta name="description" content="import requests
+from bs4 import BeautifulSoup
+from threading import Thread
+import time
+headers = {  # 爬取需要模拟浏览器来访问
+'User..." />
+    <meta name="keywords" content="py实例" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -85,50 +79,86 @@ QQ:2830023171
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              爬取毒刺网页的ip地址及检测是否可用以及下载
             </h2>
             <div class="post-info">
               <span>
-                2020-05-30
+                2020-06-26
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
+              
+                <a href="https://xxz6.github.io/tag/Mv2slQXH8/" class="post-tag">
+                  # py实例
+                </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>你们的可爱鑫小张</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>课余游戏</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>QQ:2830023171<br>
-邮箱:2830023171@qq.com</p>
+                <p>import requests<br>
+from bs4 import BeautifulSoup<br>
+from threading import Thread<br>
+import time</p>
+<p>headers = {  # 爬取需要模拟浏览器来访问<br>
+'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Mobile Safari/537.36'<br>
+}<br>
+def huoqu(proxies, targeurl, ip, f):  # 判断是否可用的方法<br>
+response = requests.get(targeurl, proxies=proxies, headers=headers, timeout=5).status_code<br>
+if response == 200:<br>
+f.write(ip + '\n')<br>
+print(ip + '可用')</p>
+<p>def danye():<br>
+for aa in range(1, 10):  # 爬取前10页每访问一页+1<br>
+url = 'https://www.xicidaili.com/nt/{}'.format(aa)<br>
+headers = {<br>
+'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Mobile Safari/537.36'<br>
+}<br>
+requ = requests.get(url, headers=headers)<br>
+soup = BeautifulSoup(requ.text)<br>
+xz = soup.find_all('tr', class_=&quot;odd&quot;)<br>
+with open('ip.xls', 'a', encoding='utf-8')as f:<br>
+for i in xz:  # 从html锁定ip以及它的端口<br>
+t = i.find_all('td')<br>
+ip = t[1].text+':' + t[2].text<br>
+# ip = '58.20.196.142:443'<br>
+proxies = {'http': 'http://'+ip}<br>
+targeurl = 'https://www.baidu.com/' # 访问百度是否可用<br>
+try: #可用就执行写入操作否则跳过<br>
+th_list = []<br>
+for i in range(1):<br>
+th = Thread(target=huoqu(proxies, targeurl, ip, f))<br>
+th_list.append(th)<br>
+for th in th_list:<br>
+th.start()</p>
+<pre><code>            except:
+                print(ip)
+                print('ip不可用')
+</code></pre>
+<p>start_time = time.time()  #记录 开始运行时间<br>
+danye()<br>
+end_time = time.time()  #记录结束运行时间<br>
+print('访问共耗时', end_time-start_time)</p>
+<!-- more -->
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xxz6.github.io/post/123/">
+              <h3 class="post-title">
+                123
+              </h3>
+            </a>
+          </div>
         
 
         
